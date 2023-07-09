@@ -1,13 +1,16 @@
 (*
     Exercise 1
-    Write a recursive function that counts down from a given number to zero. The function should print each number as it counts down.
+    Write a recursive function that counts down from a given number to zero. 
+    The function should print each number as it counts down.
 *)
 
 // Build the function
 let rec countdown (n: int) = 
     match n with
     | (num: int) when num < 0 -> ()        // Do nothing
-    | _ -> printfn "%d" n; countdown (n-1) // Print n and repeat the function with n-1 
+    | _ -> 
+        printfn "%d" n  // Print n 
+        countdown (n-1) // Repeat the function with n-1 
 
 // Test it
 countdown 5
@@ -52,11 +55,15 @@ factorial 5
 *)
 
 // Build the function
-let rec fibonacci (n: int) = 
-    match n with 
-    | (n: int) when n <=2 -> 1
-    | _ -> fibonacci (n-1) + fibonacci (n-2)
+let rec fibonacciSeq n =
+    match n with
+    | 0 | 1 -> printfn "%d" n; n
+    | _ -> 
+        let prev = fibonacciSeq (n - 1)
+        let result = prev + fibonacciSeq (n - 2)
+        printfn "%d" result
+        result
+
 
 // Test the function
-fibonacci 10
-
+fibonacciSeq 10

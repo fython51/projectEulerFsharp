@@ -11,4 +11,3 @@ let largestFactor (num: float) =
     |> List.last
 
 // largestFactor 40.
-// Fix this
